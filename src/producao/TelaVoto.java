@@ -110,7 +110,17 @@ public class TelaVoto extends javax.swing.JFrame {
         Calendar ano = Calendar.getInstance();
         int anoAtual = ano.getWeekYear();
         int anoNas = Integer.parseInt(txtIdade.getText());
-        int idade = anoNas - anoAtual;
+        int idade = anoAtual - anoNas ;
+        
+        if (idade <16){
+           lblRes.setText("Não VOTA!");
+        }else{
+            if((idade>=16 && idade<18)||(idade >70)){
+                lblRes.setText("Voto Opcional");
+            }else{
+                lblRes.setText("Voto Obrigatório");
+            }
+        }
     }//GEN-LAST:event_btnVotoActionPerformed
 
     /**
