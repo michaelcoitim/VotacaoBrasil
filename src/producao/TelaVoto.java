@@ -5,9 +5,12 @@
  */
 package producao;
 
+import java.util.Calendar;
+import java.util.Locale;
+
 /**
  *
- * @author micha
+ * @author Michael Coitim
  */
 public class TelaVoto extends javax.swing.JFrame {
 
@@ -52,6 +55,11 @@ public class TelaVoto extends javax.swing.JFrame {
         lblRes.setText("Resultado");
 
         btnVoto.setText("Posso votar?");
+        btnVoto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVotoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -65,15 +73,13 @@ public class TelaVoto extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
                         .addComponent(txtIdade, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 19, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnVoto)
-                        .addGap(8, 8, 8)))
+                        .addGap(0, 19, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addComponent(lblRes, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnVoto)
+                    .addComponent(lblRes, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -86,9 +92,9 @@ public class TelaVoto extends javax.swing.JFrame {
                     .addComponent(jLabel1))
                 .addGap(18, 18, 18)
                 .addComponent(btnVoto)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addGap(27, 27, 27)
                 .addComponent(lblRes)
-                .addGap(23, 23, 23))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         pack();
@@ -97,6 +103,15 @@ public class TelaVoto extends javax.swing.JFrame {
     private void txtIdadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdadeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIdadeActionPerformed
+
+    private void btnVotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVotoActionPerformed
+        // TODO add your handling code here:
+        
+        Calendar ano = Calendar.getInstance();
+        int anoAtual = ano.getWeekYear();
+        int anoNas = Integer.parseInt(txtIdade.getText());
+        int idade = anoNas - anoAtual;
+    }//GEN-LAST:event_btnVotoActionPerformed
 
     /**
      * @param args the command line arguments
