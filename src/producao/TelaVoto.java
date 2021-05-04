@@ -5,6 +5,7 @@
  */
 package producao;
 
+import java.awt.Color;
 import java.util.Calendar;
 import java.util.Locale;
 
@@ -35,6 +36,7 @@ public class TelaVoto extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         lblRes = new javax.swing.JLabel();
         btnVoto = new javax.swing.JButton();
+        lblIdade = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,6 +63,9 @@ public class TelaVoto extends javax.swing.JFrame {
             }
         });
 
+        lblIdade.setForeground(new java.awt.Color(153, 153, 153));
+        lblIdade.setText("idade");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -69,18 +74,21 @@ public class TelaVoto extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtIdade, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel1)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtIdade, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(22, 22, 22)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblIdade, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(lblRes, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnVoto)))))
                         .addGap(0, 19, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnVoto)
-                    .addComponent(lblRes, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,9 +100,11 @@ public class TelaVoto extends javax.swing.JFrame {
                     .addComponent(jLabel1))
                 .addGap(18, 18, 18)
                 .addComponent(btnVoto)
-                .addGap(27, 27, 27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addComponent(lblIdade)
+                .addGap(18, 18, 18)
                 .addComponent(lblRes)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
         );
 
         pack();
@@ -111,8 +121,10 @@ public class TelaVoto extends javax.swing.JFrame {
         int anoAtual = ano.getWeekYear();
         int anoNas = Integer.parseInt(txtIdade.getText());
         int idade = anoAtual - anoNas ;
-        
-        if (idade <16){
+        lblIdade.setForeground(Color.blue);
+        lblIdade.setText(Integer.toString(idade)+" Anos de Idade");
+       if (idade <16){
+           lblRes.setForeground(Color.red);
            lblRes.setText("Não VOTA!");
         }else{
             if((idade>=16 && idade<18)||(idade >70)){
@@ -162,6 +174,7 @@ public class TelaVoto extends javax.swing.JFrame {
     private javax.swing.JButton btnVoto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel lblIdade;
     private javax.swing.JLabel lblRes;
     private javax.swing.JTextField txtIdade;
     // End of variables declaration//GEN-END:variables
